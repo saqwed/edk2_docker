@@ -25,7 +25,7 @@ docker push ghcr.io/saqwed/win_edk2_docker/win_edk2_docker:latest
 
 - `docker run -it win_edk2_docker c:\windows\system32\cmd.exe`
 - If you already clone the tianocore/edk2 repository, use below command to map the directory into container
-  - `docker run -it win_edk2_docker -v c:\edk2:c:\edk2 c:\windows\system32\cmd.exe`
+  - `docker run -it -v c:\edk2:c:\edk2 win_edk2_docker c:\windows\system32\cmd.exe`
 
 ## How to setup build environment in the docker container
 
