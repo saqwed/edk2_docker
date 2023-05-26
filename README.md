@@ -21,6 +21,12 @@ docker tag win_edk2_docker ghcr.io/saqwed/win_edk2_docker/win_edk2_docker:latest
 docker push ghcr.io/saqwed/win_edk2_docker/win_edk2_docker:latest
 ```
 
+## Pull image from ghcr.io
+
+```bash
+docker pull ghcr.io/saqwed/win_edk2_docker/win_edk2_docker:latest
+```
+
 ## How to run the docker image
 
 - `docker run -it win_edk2_docker c:\windows\system32\cmd.exe`
