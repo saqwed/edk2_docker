@@ -57,3 +57,21 @@ rem build -a X64 -t VS2019 -p ShellPkg/ShellPkg.dsc -b RELEASE
 build -a IA32 -a X64 -t VS2019 -p OvmfPkg/OvmfPkgIa32X64.dsc -b RELEASE
 ```
 
+## Use vswhere to get Visual Studio install directory
+
+Cannot run directly, have to put into a batch file and run it.
+
+
+```batch
+rem x86
+
+for /f "tokens=*" %%i in ('"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -requires Microsoft.VisualStudio.Product.BuildTools -property installationPath') do call %%i\VC\Auxiliary\Build\vcvars32.bat
+rem for /f "tokens=*" %%i in ('"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath') do call %%i\VC\Auxiliary\Build\vcvars32.bat
+
+rem x86/x64
+
+for /f "tokens=*" %%i in ('"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -requires Microsoft.VisualStudio.Product.BuildTools -property installationPath') do call %%i\VC\Auxiliary\Build\vcvarsx86_amd64.bat
+rem for /f "tokens=*" %%i in ('"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath') do call %%i\VC\Auxiliary\Build\vcvarsx86_amd64.bat
+```
+
+Reference from: [Find-VC](https://github.com/microsoft/vswhere/wiki/Find-VC)
